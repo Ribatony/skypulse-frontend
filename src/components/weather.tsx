@@ -1,6 +1,6 @@
 import { component$, useStore, $ } from '@builder.io/qwik';
 import '../styles/themes.css';
-import { WeatherState, WeatherData, HourlyForecast } from '../types/weather';
+import { WeatherState, HourlyForecast } from '../types/weather';
 
 export default component$(() => {
   const state = useStore<WeatherState>({
@@ -93,7 +93,7 @@ export default component$(() => {
             </div>
 
             <div class="temp-display">
-              <img src={state.weather.icon} alt={state.weather.condition} class="weather-icon-large" />
+              <img src={state.weather.icon} alt={state.weather.condition} class="weather-icon-large" width="100" height="100" />
               <div class="temp-box">
                 <span class="temperature">{state.weather.temp}°</span>
                 <p class="condition">{state.weather.condition}</p>
@@ -142,7 +142,7 @@ export default component$(() => {
               {state.weather?.hourly.map((hour: HourlyForecast) => (
                 <div key={hour.time} class="hourly-card">
                   <p class="time">{hour.time}</p>
-                  <img src={hour.icon} alt={hour.condition} class="hourly-icon" />
+                  <img src={hour.icon} alt={hour.condition} class="hourly-icon" width="40" height="40" />
                   <p class="hourly-temp">{Math.round(hour.temp)}°</p>
                 </div>
               ))}
